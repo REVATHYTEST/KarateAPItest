@@ -4,14 +4,14 @@ Feature: Perform Curd operations
     * url 'https://api.escuelajs.co/api/v1/products'
 
   Scenario: Create a get request
-    When method get
+    When method GET
     Then status 200
     # printing the get request
     And print "response is:" , response
     Then assert responseTime < 4000
 
   Scenario: Get a single product
-    Given path "/19"
+    Given path "/167"
     When method get
     Then status 200
     And print "response is:" , response
@@ -29,22 +29,21 @@ Feature: Perform Curd operations
     # printing the get request
     And print "response is:" , response
     And def postId = response.id
-    And path "/18"
+    And path "/167"
     And request {"title": "Title changed","price": 150}
     When method PUT
     Then status 200
     And print "response is:", response
-    
-    Scenario: Delete the updated record using Delete Request
-    Given path "/18"
-    And request {"title": "Title changed","price": 150}
-    When method PUT
-    Then status 200
-    And print "response is:", response
-    And def postId = response.id
-    And path postId
+
+  Scenario: Delete the updated record using Delete Request
+    Given path "/167"
     When method DELETE
     Then status 200
     And print "response is:", response
+
     
-    
+    Scenario: pagination
+    Given url "https://api.escuelajs.co/api/v1/products?offset=0&limit=10"
+    When method GET
+    Then status 200
+    And print "response is:", response
