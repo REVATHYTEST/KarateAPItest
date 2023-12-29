@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"src\/test\/java\/com\/tests\/newAssessment[1:6]","start":1703728766058,"end":1703728767801,"title":"src\/test\/java\/com\/tests\/newAssessment[1:6] 07:29:26.058-07:29:27.801 Create a get request"},{"id":2,"group":1,"content":"src\/test\/java\/com\/tests\/newAssessment[2:13]","start":1703728767807,"end":1703728768692,"title":"src\/test\/java\/com\/tests\/newAssessment[2:13] 07:29:27.807-07:29:28.692 Create a product using PUT Request"},{"id":3,"group":1,"content":"src\/test\/java\/com\/tests\/newAssessment[3:22]","start":1703728768696,"end":1703728770596,"title":"src\/test\/java\/com\/tests\/newAssessment[3:22] 07:29:28.696-07:29:30.596 Edit the record using PUT Request","className":"failed"},{"id":4,"group":1,"content":"src\/test\/java\/com\/tests\/newAssessment[4:34]","start":1703728770602,"end":1703728771399,"title":"src\/test\/java\/com\/tests\/newAssessment[4:34] 07:29:30.602-07:29:31.399 Delete the updated record using Delete Request","className":"failed"},{"id":5,"group":1,"content":"src\/test\/java\/com\/tests\/newAssessment[5:40]","start":1703728771402,"end":1703728772271,"title":"src\/test\/java\/com\/tests\/newAssessment[5:40] 07:29:31.402-07:29:32.271 pagination"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>

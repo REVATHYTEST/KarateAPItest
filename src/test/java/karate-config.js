@@ -5,5 +5,6 @@ function fn(){
         baseURL : "https://reqres.in/api"
 
     };
+    karate.configure('continueOnStepFailure', true)
     return config
 }
